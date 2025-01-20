@@ -2,6 +2,7 @@ package com.example.microservice.movieservice.controllers;
 
 import com.example.microservice.movieservice.models.Movie;
 import com.example.microservice.movieservice.services.MovieService;
+import com.example.microservice.share.annotation.RequireAPIKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ public class MovieController {
     private MovieService movieService;
 
     @GetMapping
+    @RequireAPIKey
     public List<Movie> getAllMovies() {
         return movieService.findAll();
     }
